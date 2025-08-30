@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8000/fruits
+Accept: application/json
+Content-Type: application/json 
+
+
+{
+  "name": "a fruit"
+}

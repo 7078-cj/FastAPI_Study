@@ -1,8 +1,24 @@
-POST http://127.0.0.1:8000/fruits
+# POST http://127.0.0.1:8000/fruits
+# Accept: application/json
+# Content-Type: application/json 
+
+
+# {
+#   "name": "a fruit"
+# }
+
+DELETE  http://127.0.0.1:8000/fruits/0
 Accept: application/json
 Content-Type: application/json 
 
+# PUT http://127.0.0.1:8000/fruits/0
+# Accept: application/json
+# Content-Type: application/json 
 
-{
-  "name": "a fruit"
-}
+
+# {
+#   "name": "a fruit updated"
+# }
+
+
+

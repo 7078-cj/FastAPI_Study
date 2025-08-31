@@ -3,9 +3,12 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from . import schemas, database
 from sqlalchemy.orm import Session, sessionmaker
-from typing import List
+from typing import List, Annotated
+from . import auth
+from starlette import status
 
 app = FastAPI()
+app.include_router(auth.router)
 
 origins = [
     "http://localhost:5173"
@@ -20,11 +23,20 @@ app.add_middleware(
 )
 
 def get_db():
-    db = database.Session()
+    db = database.Session_Local()
     try:
         yield db
     finally:
         db.close()
+        
+        
+user_dependency = Annotated[dict, Depends(auth.get_current_user) ]
+
+@app.get("/", status_code=status.HTTP_200_OK)
+def test_token(user: user_dependency):
+    print(user)
+    return {"User":user}
+
 
 @app.get("/fruits", response_model=List[schemas.Fruit])
 def get_fruits(db: Session = Depends(get_db)):

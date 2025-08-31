@@ -14,7 +14,26 @@ class FruitUpdate(BaseModel):
     
     class Config:
         orm_mode = True 
-
+        
+class User(BaseModel):
+    id: int
+    username: str
+    hashed_password: str
+    
+    class Config:
+        orm_mode = True 
+        
+class CreateUserRequest(BaseModel):
+    
+    username: str
+    password: str
+    
+class Token(BaseModel):
+    
+    access_token: str
+    token_type: str
+    
+ 
 
     
     

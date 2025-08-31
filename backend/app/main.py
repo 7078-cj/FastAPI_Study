@@ -8,7 +8,7 @@ from typing import List
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173/"
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
@@ -70,4 +70,4 @@ def delete_fruit(id: int, db: Session = Depends(get_db)):
     return "deleted"
 
 if __name__ == "main" :
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)

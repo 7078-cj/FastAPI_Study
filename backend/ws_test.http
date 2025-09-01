@@ -1,0 +1,8 @@
+# Connect to WebSocket
+WS ws://localhost:8000/ws
+
+# Send a text message
+> Hello FastAPI WS!
+
+# Send another message
+> Ping!
